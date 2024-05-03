@@ -1,0 +1,124 @@
+{% load static %}<!-- very important to resolve static errors such as template syntax error -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Jewelry Store{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!--the following loads social media icons in the footer:
+    (the colors are in the footer and set by the user) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-*************" crossorigin="anonymous" />
+
+    <style>
+        /* Additional CSS styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .container {
+            display: flex;
+            align-items: center;
+        }
+        header form {
+            display: flex;
+            align-items: center;
+            margin-left: auto; /* Pushes the form to the rightmost edge */
+        }
+        header input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 5px;
+            color: #000; /* Changed text color to black */
+        }
+        header button[type="submit"] {
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        #genderDropdown {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+        .dropdown-content a {
+            cursor: pointer;
+        }
+    </style>   
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>RoyaljewlZ jewelry store</h1>
+            <!--this searchbar and gender dropdown are ok so do not interfere-->
+            <form action="{% url 'search_items' %}" method="GET">
+                <input type="text" name="q" placeholder="Search items">
+                <select name="gender" id="genderDropdown">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <!-- Both gender dropdown and search bar moved to the rightmost edge -->
+        
+        
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'aboutus' %}">About Us</a></li>
+
+                <!-- for the "{% url 'all_items' %}" use the name property from the urls.py  -->
+                <li><a href="{% url 'all_items' %}">All Items</a></li>
+                <li class="dropdown">
+                    <a href="{% url 'user_details' %}" class="dropbtn">Sell your jewelry</a>
+                    <div class="dropdown-content">
+                        <a href="{% url 'selling_progress' %}">View selling progress</a>
+                    </div>
+                </li>
+                <!-- Add more navigation links here -->
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content">
+        {% block content %}
+        <!-- This block will be overridden in child templates -->
+        {% endblock %}
+    </div>
+
+    <footer>
+        <p> &copy; 2024 RoyaljewlZ. All rights reserved.</p>
+        <div class="container">
+            <ul class="social-links">
+            <li><a href="https://www.facebook.com"><i class="fab fa-facebook" style="color: #3b5998;"></i></a>Facebook: RoyaljewlZ</li>
+            <li><a href="https://www.twitter.com"><i class="fab fa-twitter" style="color: #1da1f2;"></i></a>(X)Twitter: RoyaljewlZ</li>
+            <li><a href="https://www.instagram.com/"><i class="fab fa-instagram" style="color: #c13584;"></i></a>Instagram: RoyaljewlZ</li>
+            <!-- Add more social links here -->
+            </ul>
+        </div>
+    </footer>
+
+    <!-- i removed the div that had the background id that was here originally
+    and moved it to home.html -->
+
+    <script>
+        // JavaScript function to redirect to search page with selected gender
+        function searchGender(gender) {
+            if (gender) {
+                window.location.href = "{% url 'search_items' %}?q=" + gender;
+            }
+        }
+    </script>
+</body>
+</html>

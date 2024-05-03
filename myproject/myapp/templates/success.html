@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Success{% endblock %}
+
+{% block content %}
+<style>
+    /* Custom CSS styles */
+    .success-btn {
+        background-color: transparent;
+        border: 2px solid #4CAF50; /* Green outline */
+        color: #4CAF50; /* Green text */
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px; /* Rounded corners */
+        transition-duration: 0.4s;
+    }
+    .success-btn:hover {
+        background-color: #4CAF50; /* Green background on hover */
+        color: white;
+    }
+    .check-icon {
+        width: 40px;
+        height: 40px;
+        fill: #4CAF50; /* Green color */
+        vertical-align: middle; /* Align vertically with the button */
+        margin-right: 10px; /* Spacing between checkmark and button */
+    }
+    .check-circle {
+        fill: none;
+        stroke: #4CAF50; /* Green outline */
+        stroke-width: 2px;
+        stroke-linecap: round;
+    }
+</style>
+
+<h1>Success!</h1>
+<p>Your details have been submitted.</p>
+
+<!-- Green checkmark icon with circle -->
+<svg xmlns="http://www.w3.org/2000/svg" class="check-icon" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10" class="check-circle"/>
+    <path fill="#4CAF50" d="M9 16.17l-3.88-3.88a.996.996 0 0 1 1.41-1.41L9 13.34l6.47-6.47a.996.996 0 1 1 1.41 1.41l-7.18 7.18a.996.996 0 0 1-1.41 0z"/>
+</svg>
+
+<!-- View Selling Progress button -->
+<a href="{% url 'selling_progress' %}" class="success-btn">View Selling Progress</a>
+
+{% endblock %}

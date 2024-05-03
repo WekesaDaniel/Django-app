@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Selling progress{% endblock %}
+
+{% block content %}
+<style>
+    /* Custom CSS styles */
+    table {
+        width: 80%; /* Set width to 80% of the viewport */
+        margin: 0 auto; /* Center the table horizontally */
+        border-collapse: collapse; /* Collapse borders between cells */
+    }
+    th, td {
+        padding: 10px; /* Add padding to cells */
+        text-align: left; /* Align text to the left */
+        border-bottom: 1px solid #ddd; /* Add bottom border to table cells */
+    }
+    th {
+        background-color: #f2f2f2; /* Light gray background for table headers */
+    }
+    tbody tr:nth-child(even) {
+        background-color: #f2f2f2; /* Alternate row background color */
+    }
+    .pending {
+        color: red; /* Red text for pending status */
+    }
+    .approved {
+        color: limegreen; /* Bright green text for approved status */
+    }
+</style>
+
+<h1 style="text-align: center;">Selling Progress</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Post Office Box</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user_detail in user_details %}
+        <tr>
+            <td>{{ user_detail.name }}</td>
+            <td>{{ user_detail.email }}</td>
+            <td>{{ user_detail.post_office_box }}</td>
+            <td class="{% if user_detail.status == 'Pending' %}pending{% elif user_detail.status == 'Approved' %}approved{% endif %}">
+                {{ user_detail.status }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

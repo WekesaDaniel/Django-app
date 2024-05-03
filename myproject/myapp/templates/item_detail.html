@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Jewel detail{% endblock %}
+
+{% block content %}
+    
+<h1>Item Detail</h1>
+
+<style>
+    /* Inline CSS for layout */
+    .item-container {
+        display: flex;
+        align-items: center; /* Center items vertically */
+        margin: 0 auto; /* Center container horizontally */
+        max-width: 800px; /* Limit container width */
+    }
+
+    .item-image {
+        width: 50%; /* Make the image larger */
+        margin-right: 30px; /* Add some spacing between the image and text */
+    }
+
+    .item-details {
+        width: 60%; /* Make the text description larger */
+    }
+
+    .buy-button {
+        display: inline-block;
+        background-color: #4CAF50; /* Green color for buy button */
+        color: white;
+        padding: 20px 50px; /* Double the padding */
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 20px; /* Less rounded corners */
+        cursor: pointer;
+        margin-top: 20px; /* Add margin to the top */
+    }
+
+    .buy-button:hover {
+        background-color: #45a049; /* Darker green color on hover */
+    }
+</style>
+
+<div class="item-container">
+    <img src="{{ item.image.url }}" alt="{{ item.type }}" class="item-image">
+    <div class="item-details">
+        <h2>{{ item.type }}</h2>
+        <p><strong>Price:</strong> {{ item.price }}</p>
+        <p><strong>Material:</strong> {{ item.material }}</p>
+        <p><strong>Style:</strong> {{ item.style }}</p>
+        <p><strong>Gender:</strong> {{ item.gender }}</p>
+        <p><strong>Occasion:</strong> {{ item.occasion }}</p>
+        <p><strong>Other Details:</strong> {{ item.other_details }}</p>
+    </div>
+</div>
+
+<a href="{% url 'user_details' %}" class="buy-button">Buy</a>
+
+{% endblock %}

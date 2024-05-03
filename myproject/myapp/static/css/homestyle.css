@@ -1,0 +1,14 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust the minmax values to control the size of each grid item */
+    grid-gap: 20px; /* Adjust the gap between grid items */
+}
+
+.grid-item {
+    text-align: center;
+}
+
+.thumbnail {
+    width: 100%; /* Adjust the width of the thumbnail images */
+    height: auto; /* Maintain aspect ratio */
+}

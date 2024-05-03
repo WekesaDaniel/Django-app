@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}All Jewelry{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="/static/css/homestyle.css">
+    <h1>All Items</h1>
+
+    <div class="grid-container">
+    {% for item in items %}
+    <div class="grid-item">
+        <a href="{% url 'item_detail' item.id %}">
+            <img src="{{ item.image.url }}" alt="{{ item.type }}" class="thumbnail">
+            <h2>{{ item.type }}</h2>
+        </a>
+    </div>
+    {% endfor %}
+    </div>
+
+
+    
+{% endblock %}

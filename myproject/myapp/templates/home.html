@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Custom Title{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="/static/css/homestyle.css">
+
+    <!-- Background image container with img tag -->
+    <div class="background-container" style="position: relative; z-index: 1; height: 100%;" >
+        <img id="backgroundImage" src="" alt="Background Image" style="width: 100%; height: auto; ">
+        <div class="container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); bottom: 0;">
+            <div class="content" style="text-align: center;">
+                <div id="imageDescription" style="font-size: 2em; color: white; margin-bottom: 20px;"></div>
+                <a id="ctaButton" href="#" style="background-color: transparent; color: white; border: 2px solid white; border-radius: 10px; padding: 10px 20px; font-size: 1.5em; cursor: pointer;"></a>
+            </div>
+        </div>
+    </div>
+    <style>
+        footer{
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            
+        }
+    </style>
+    <script>
+        const images = [
+            { url: 'static/images/gucci.jpg', description: 'Welcome to our Jewelry Store! Discover exquisite jewelry collections and find the perfect piece for any occasion.', buttonText: 'View All Jewelry', link: "http://127.0.0.1:8000/allitems/" },
+            { url: 'static/images/image2.jpg', description: 'Indulge in the elegance of our jewelry collection. Find the perfect piece to adorn yourself or to gift to someone special.', buttonText: 'Buy Jewelry', link: "{% url 'all_items' %}" },
+            { url: 'static/images/image3.jpg', description: 'Looking to sell your jewelry? Let us help you! Sign up for our service and turn your treasures into cash.', buttonText: 'Sign Up Now', link: "{% url 'user_details' %}" }
+        ];
+
+        let currentIndex = 0;
+
+        function changeBackgroundImage() {
+            const backgroundImage = document.getElementById('backgroundImage');
+            backgroundImage.src = images[currentIndex].url;
+
+            const description = document.getElementById('imageDescription');
+            description.textContent = images[currentIndex].description;
+
+            const button = document.getElementById('ctaButton');
+            button.textContent = images[currentIndex].buttonText;
+            button.href = images[currentIndex].link;
+
+            currentIndex = (currentIndex + 1) % images.length;
+        }
+
+        setInterval(changeBackgroundImage, 5000); // Change image every 5 seconds
+    </script>
+{% endblock %}

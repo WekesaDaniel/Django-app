@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Custom Title{% endblock %}
+
+{% block content %}
+    <style>
+    /* CSS styles for images */
+    .container img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 20px auto;
+    }
+
+    section img {
+        width: 80%;
+    }
+
+    /* Media query for responsive design */
+    @media screen and (max-width: 768px) {
+        .container img {
+            width: 100%;
+        }
+    }
+    </style>
+
+
+    <div class="container">
+    <section>
+        <h2>Welcome to Our Jewelry Store</h2>
+        <p>At RoyaljewlZ, we pride ourselves on offering exquisite jewelry collections that cater to every taste and occasion. Our journey began with a passion for craftsmanship and a commitment to providing exceptional service to our customers.</p>
+        <img src="/static/images/welcome_image.jpg" alt="Welcome Image">
+        <!--remember the /before static for the images-->
+    </section>
+
+    <section>
+        <h2>Our Mission</h2>
+        <p>Our mission is simple: to help you find the perfect piece of jewelry that resonates with your style and personality. Whether you're searching for a timeless engagement ring, a statement necklace for a special event, or a thoughtful gift for a loved one, we're here to guide you every step of the way.</p>
+    </section>
+
+    <section>
+        <h2>Quality and Craftsmanship</h2>
+        <p>We source our materials from trusted suppliers and work with skilled artisans who uphold the highest standards of craftsmanship. Each piece in our collection is meticulously crafted to ensure durability, beauty, and lasting value.</p>
+    </section>
+
+    <section>
+        <h2>Customer Satisfaction</h2>
+        <p>At RoyaljewlZ, customer satisfaction is our top priority. We strive to provide a seamless shopping experience, from browsing our curated collections to receiving your order. Our knowledgeable team is always available to answer your questions and assist you in finding the perfect piece.</p>
+    </section>
+
+    <section>
+        <h2>Visit Us Today</h2>
+        <p>We invite you to explore our online store or visit our boutique to discover the magic of RoyaljewlZ jewelry. Thank you for choosing us to be a part of your special moments.</p>
+        <img src="/static/images/visit_us_image.jpg" alt="Visit Us Image">
+    </section>
+    </div>
+
+{% endblock %}
